@@ -1,5 +1,8 @@
-''' Unit test to eratosthenes_sieve.py script. 
-Run as a module: $python -m uniitest test_eratosthenes_sieve '''
+''' 
+Unit test to eratosthenes_sieve.py script. 
+Run as a module: $python -m uniitest test_eratosthenes_sieve 
+Note: tests are run in the random order. 
+'''
 
 import unittest
 from sympy import sieve
@@ -19,10 +22,9 @@ class TestCalc(unittest.TestCase):
 
     def test_is_valid(self):
         self.assertTrue(is_valid('10'))
-        self.assertFalse(is_valid('xD'))
-        self.assertFalse(is_valid('5.5'))
-        self.assertFalse(is_valid('-8'))
-        self.assertFalse(is_valid('0'))
+
+        for item in ['xD', '5.5', '-8', '0']:
+            self.assertFalse(is_valid(item))
 
         # to check if ValueError is raised
         # with self.assertRaises(ValueError):
