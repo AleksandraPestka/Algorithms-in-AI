@@ -1,11 +1,12 @@
-''' Implement Tic-Tac-Toe game using Python Object-Oriented Programming.
+''' 
+Implement Tic-Tac-Toe game using Python Object-Oriented Programming.
 User vs computer game. 
-Strategy: Minimax Algorithm. Theory: https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/?ref=lbp
+Strategy: Minimax Algorithm.
 '''
 
 import random
 
-from player import HumanPlayer, ComputerRandomPlayer
+from player import HumanPlayer, ComputerRandomPlayer, ComputerAIPlayer
 
 class Board:
     def __init__(self):
@@ -70,8 +71,9 @@ class Board:
 class Game:
     def __init__(self, choice):
         self.player_user = HumanPlayer(choice)
-        self.player_comp = ComputerRandomPlayer('X') if choice == 'O' \
-                            else ComputerRandomPlayer('O')
+        self.player_comp = ComputerAIPlayer('X') if choice == 'O' \
+                            else ComputerAIPlayer('O')
+        self.current_winner = None
         self.board = Board()
 
     @staticmethod
@@ -93,6 +95,7 @@ class Game:
 
     def won_game(self, player):
         '''Returns True if the player won the game, False otherwise.'''
+        if self.board.is_winner(player): self.current_winner = player.type
         return self.board.is_winner(player)
 
 def player_initial_choice():
@@ -116,7 +119,7 @@ def play(choice):
 
     while(game.board._is_empty_field()):
         game.board.print_board()
-        position = player.get_move(game)            
+        position = player.get_move(game)  
         game.modify_board(position, player.type)
         
         if game.won_game(player):  
