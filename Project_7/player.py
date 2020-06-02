@@ -50,7 +50,10 @@ class ComputerAIPlayer(Player):
         return position
 
     def minimax(self, game, player_type):
-        # define minimizer and maximizer
+        ''' Evaluate all the available moves using minimax() and return
+        the best move the maximizer can make. '''
+
+        # define minimizer(human) and maximizer(computer)
         max_player = self.type
         min_player = 'O' if player_type == 'X' else 'X'
 
@@ -63,6 +66,7 @@ class ComputerAIPlayer(Player):
                     else -1 * (len(game.board.available_moves()) + 1)
                 }
         elif not game.board._is_empty_field():
+            # there is a tie
             return {'position': None, 'score': 0}
 
         if player_type == max_player:
