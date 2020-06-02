@@ -6,15 +6,20 @@ import matplotlib.pyplot as plt
 from scipy import stats
 from sklearn.cluster import DBSCAN
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import KernelPCA
+from sklearn.decomposition import PCA
 
 from preprocessing import XML_to_dict, dict_to_dataframe
 
 def remove_outliers(df):
     numeric_columns = ['num_contrib', 'year', 'num_pages']
     z_scores = stats.zscore(df[numeric_columns])
-    filtered_entries = (np.abs(z_scores) < 3).all(axis=1)
+
+    # remove rows with values > 3 * std
+    filtered_entries = (np.abs(z_scores) <= 3).all(axis=1)
     new_df = df[filtered_entries]
+
+    # remove rows with num_pages > 100
+    new_df = df[df.num_pages<100]
     return new_df
 
 def plot3D_data(df, labels=None):
@@ -30,18 +35,16 @@ def plot2D_data(data, labels=None):
     fig = plt.figure()
     ax = plt.axes()
     ax.scatter(data[:, 0], data[:,1], c=labels)
-    ax.set_xlabel('PCA 1st component')
-    ax.set_ylabel('PCA 2nd component')
+    ax.set_xlabel('feature 1')
+    ax.set_ylabel('feature 2')
     plt.show()
 
 def clustering(df):
     # get the numerical values
     num_vals = df[[col for col in df_cleaned.columns if col!='title']].values
     
-    print(f'[INFO] Reducing dimensions to 2D using PCA ')
-    pca = KernelPCA(n_components=2, kernel='rbf')
-    data_2D = pca.fit_transform(num_vals)
-    #print(f'[INFO] Explained variance ratio: {pca.explained_variance_ratio_}')
+    # reduce data to 2 dims
+    data_2D = num_vals[:, :2]
 
     # standardize each column (feature) 
     print(f'[INFO] Standarization of features')
@@ -71,5 +74,6 @@ if __name__ == '__main__':
     print(f'Estimated number of clusters: {n_clusters_}')
     print(f'Estimated fraction of noise points: {(n_noise_/len(labels)):.2f}')
 
+    # plot clusters in 2D and 3D
     plot2D_data(data_2D, labels)
     plot3D_data(df_cleaned, labels)
