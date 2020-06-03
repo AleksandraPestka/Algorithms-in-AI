@@ -2,6 +2,7 @@
 Use sieve of Eratosthenes algorithm. '''
 
 import numpy as np
+import time
 
 def is_valid(text):
     try:
@@ -44,7 +45,11 @@ if __name__ == '__main__':
     var = int(var_str)
 
     # results
+    start = time.time()
     prime_nums = find_all_prime_numbers(var)
+    stop = time.time()
+
     print(f'All prime numbers from range [2, {var}] are: ')
     print(prime_nums)
+    print(f'It takes {(stop-start):.5f} seconds.')
         

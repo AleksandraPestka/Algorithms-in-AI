@@ -26,6 +26,3 @@ class TestCalc(unittest.TestCase):
         for item in ['xD', '5.5', '-8', '0']:
             self.assertFalse(is_valid(item))
 
-        # to check if ValueError is raised
-        # with self.assertRaises(ValueError):
-        #     is_valid('xD')
