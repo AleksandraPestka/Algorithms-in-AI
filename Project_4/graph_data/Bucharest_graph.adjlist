@@ -1,0 +1,86 @@
+# Arad to Bucharest graph with weights
+Arad 3
+Zerind {'weights':75}
+Sibiu {'weights':140}
+Timisoara {'weights':118}
+#
+Zerind 2
+Arad {'weights':75}
+Oradea {'weights':71}
+#
+Oradea 2
+Zerind {'weights':71}
+Sibiu {'weights':151}
+#
+Sibiu 4
+Arad {'weights':140}
+Oradea {'weights':151}
+Fagaras {'weights':99}
+Rimnicu_Vilcea {'weights':80}
+#
+Timisoara 2
+Arad {'weights':118}
+Lugoj {'weights':111}
+#
+Lugoj 2
+Timisoara {'weights':111}
+Mehadia {'weights':70}
+#
+Mehadia 2
+Lugoj {'weights':70}
+Drobeta {'weights':75}
+#
+Drobeta 2
+Mehadia {'weights':75}
+Craiova {'weights':120}
+#
+Craiova 3
+Drobeta {'weights':120}
+Rimnicu_Vilcea {'weights':146}
+Pitesti {'weights': 138}
+#
+Rimnicu_Vilcea 3
+Sibiu {'weights':80}
+Pitesti {'weights':97}
+Craiova {'weights':146}
+#
+Pitesti 3
+Craiova {'weights':138}
+Rimnicu_Vilcea {'weights':97}
+Bucharest {'weights':101}
+#
+Fagaras 2
+Sibiu {'weights':99}
+Bucharest {'weights':211}
+#
+Bucharest 4
+Pitesti {'weights':101}
+Fagaras {'weights': 211}
+Giurgiu {'weights':90}
+Urziceni {'weights':85}
+#
+Giurgiu 1
+Bucharest {'weights':90}
+#
+Urziceni 3
+Bucharest {'weights':85}
+Hirsova {'weights':98}
+Vaslui {'weights':142}
+#
+Hirsova 2
+Urziceni {'weights':98}
+Eforie {'weights':86}
+#
+Eforie 1
+Hirsova {'weights':86}
+#
+Vaslui 2
+Urziceni {'weights':142}
+Iasi {'weights':92}
+#
+Iasi 2
+Vaslui {'weights':92}
+Neamt {'weights':87}
+#
+Neamt 1
+Iasi {'weights':87}
