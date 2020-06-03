@@ -1,10 +1,15 @@
-# Arad-Bucharest path
+# Arad-Bucharest the shortest path
 
 ## Task
 Find the shortest path from **Arad** to **Bucharest** in the weighted graph using Dijkstra's algorithm. 
 
 ## Graph 
 <img src="graph_data/arad_to_bucharest_graph.png" width=600>
+
+The graph has the following:
+
+- nodes (cities)
+- weighted edges that connect two nodes (distance)
 
 ## Data
 Graph was saved in .txt file as follow (the graph is undirected):
@@ -16,13 +21,23 @@ Timisoara Arad 118
 ...
 ```
 
-## Dijkstra's algorithm step 
-1. Mark all nodes unvisited and store them.
-2. Set the distance to zero for our initial node and to infinity for other nodes.
+## Dijkstra's algorithm 
+Let **v, u** be neighbour nodes and **w(v,u)** denote edge's weight, and **s** be the source node. 
+
+### Variables initialization
+- **dist** : a dictionary of distance from the source node **s** to each node in the graph
+
+- **Q**, a queue of unvisited nodes in the graph. Initially stores all nodes and at the end of the algorithm's progress, Q will be empty. 
+
+- **S**, a set of visited nodes. Initially it's empty and at the end will contain all the nodes of the graph.
+
+### Step by step
+1. Mark all nodes unvisited and store them in a queue Q.  
+2. Set the distance to zero for our initial node **dist(s) = 0** and to infinity for other nodes **dist(v) = inf**.
 
 <img src="images/graph1.png" width=400>
 
-3. Select the unvisited node with the smallest distance, it's current node now.
+3. Select the unvisited node **v** with the smallest distance **dist(v)**, it's current node now.
 
 <img src="images/graph2.png" width=400>
 
@@ -30,10 +45,13 @@ Timisoara Arad 118
 
 <img src="images/graph3.png" width=400>
 
-5. Mark the current node as visited and remove it from the unvisited set.
+5. Mark the current node as visited - add **v** to **S** and remove it from the unvisited set **Q**.
 6. Stop, if the destination node has been visited (when planning a route between two specific nodes) or if the smallest distance among the unvisited nodes is infinity. If not, repeat steps 3-6.
 
 <img src="images/graph4.png" width=400>
+
+### Results 
+**dist** now contain the shortest path from source **s**.
 
 ## Implementation 
 ``` python
@@ -95,4 +113,7 @@ The shortest path from Arad to Bucharest
 deque(['Arad', 'Sibiu', 'Rimnicu_Vilcea', 'Pitesti', 'Bucharest'])
 ```
 
+## Sources
+1) https://brilliant.org/wiki/dijkstras-short-path-finder/
+2) https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc
 

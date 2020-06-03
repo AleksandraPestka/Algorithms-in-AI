@@ -1,7 +1,6 @@
 ''' 
 Implement graph by hand. Find the shortest path 
 from Arad to Bucharest using Dijkstra's algorithm.
-Based on : https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc
 '''
 
 from collections import deque, namedtuple
