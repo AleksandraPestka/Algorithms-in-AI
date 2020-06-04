@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 from scipy import stats
 from sklearn.cluster import DBSCAN
 from sklearn.preprocessing import StandardScaler
@@ -37,6 +38,14 @@ def plot2D_data(data, labels=None):
     ax.scatter(data[:, 0], data[:,1], c=labels)
     ax.set_xlabel('feature 1')
     ax.set_ylabel('feature 2')
+    plt.show()
+
+def plot_year_distribution(df, col_name, xlabel, bins=100):
+    ax = plt.figure().gca()
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    plt.hist(df[col_name], bins=bins)
+    plt.ylabel('number of publications')
+    plt.xlabel(xlabel)
     plt.show()
 
 def clustering(df):
@@ -77,3 +86,7 @@ if __name__ == '__main__':
     # plot clusters in 2D and 3D
     plot2D_data(data_2D, labels)
     plot3D_data(df_cleaned, labels)
+
+    plot_year_distribution(df_cleaned, 'year', 'year of publication')
+    plot_year_distribution(df_cleaned, 'num_contrib', 'number of contributors')
+    plot_year_distribution(df_cleaned, 'num_pages', 'number of pages', bins=10)
