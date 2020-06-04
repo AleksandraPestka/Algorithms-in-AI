@@ -53,6 +53,10 @@ Let **v, u** be neighbour nodes and **w(v,u)** denote edge's weight, and **s** b
 ### Results 
 **dist** now contain the shortest path from source **s**.
 
+## Animation
+<img src="images/dijkstra_animation.gif" width=400>
+
+
 ## Implementation 
 ``` python
     def find_shortest_path(self, source, target):
