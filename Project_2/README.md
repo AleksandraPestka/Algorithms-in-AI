@@ -46,8 +46,8 @@ Provide a valid number!
 The maximal n is 99999 and the runtime for it is 33 seconds. <br>
 In comparison for n=100 runtime is 0.00055 sec.
 
-## Time complexity 
-Time complexity of the Eratosthenes Sieve algorithm is O(n log(log n)).
+## Time and space complexity 
+Time complexity of the Eratosthenes Sieve algorithm is **O(n log(log n))**. <br> Space complexity is **O(n)**.
 
 ## Testing 
 The code was tested using unit tests written in Python - check  *test_eratosthenes_sieve.py* script. 
